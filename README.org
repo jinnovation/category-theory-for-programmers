@@ -1,0 +1,46 @@
+#+TITLE: Category Theory for Programmers: Answers and Notes
+#+AUTHOR: Jonathan Jin
+
+* Category: The Essence of Composition
+
+** TODO [2/6] Challenges
+
+   1. [X] Implement, as best as you can, the identity function in your favorite
+      language (or the second favorite, if your favorite language happens to be
+      Haskell).
+
+      #+begin_src python
+        from typing import TypeVar
+
+        A = TypeVar('A')
+
+
+        def id(x: A) -> A:
+            return x
+      #+end_src
+
+
+   1. [X] Implement the composition function in your favorite language. It takes two
+      functions as arguments and returns a function that is their composition.
+
+      #+begin_src python
+        from typing import Callable, TypeVar
+
+        A = TypeVar('A')
+        B = TypeVar('B')
+        C = TypeVar('C')
+
+
+        def compose(f1: Callable[C, B], f2: Callable[B, A]) -> Callable[C, A]:
+            def composed(x: C) -> A:
+                return f2(f1(x))
+
+            return composed
+      #+end_src
+
+   2. [ ] Write a program that tries to test that your composition function
+      respects identity.
+   3. [ ] Is the world-wide web a category in any sense? Are links morphisms?
+   4. [ ] Is Facebook a category, with people as objects and friendships as
+      morphisms?
+   5. [ ] When is a directed graph a category?
